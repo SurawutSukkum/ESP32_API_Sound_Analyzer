@@ -21,7 +21,7 @@ import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
     },
   });
 
-
+/*
 const SoundGraph = () => {
   const [audioData, setAudioData] = useState([]);
 
@@ -40,12 +40,35 @@ const SoundGraph = () => {
 
     generateSineWave();
   }, []);
+*/
+const SoundGraph = () => {
+  const [audioData, setAudioData] = useState([]);
 
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("http://127.0.0.1:3000/audio"); // Replace with actual API URL
+        const rawData = await response.arrayBuffer();
+        const int16Array = new Int16Array(rawData);
+
+        const formattedData = Array.from(int16Array).map((value, index) => ({
+          time: index,
+          amplitude: value,
+        }));
+
+        setAudioData(formattedData);
+      } catch (error) {
+        console.error("Error fetching audio data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <ThemeProvider theme={darkTheme}>
      <CssBaseline /> {/* Ensures background stays dark */}
       <div className="p-4">
-        <h2 className="text-xl font-bold mb-4"> Pulmonary Function Tests (Sound Waveform) </h2>
+        <h2 className="text-xl font-bold mb-4"> เครื่องตรวจสมรรถภาพปอด  </h2>
         <ResponsiveContainer width="100%" height={300}>
         <LineChart data={audioData} style={{ backgroundColor: "black" }}>
           <XAxis dataKey="time" hide />
