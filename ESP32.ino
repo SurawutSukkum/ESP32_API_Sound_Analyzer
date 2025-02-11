@@ -5,7 +5,7 @@
 
 const char* ssid = "YourSSID";
 const char* password = "YourPassword";
-const char* serverUrl = "http://yourserver.com/audio"; // Replace with your server command cmd ipconfig/all
+const char* serverUrl = "http://127.0.0.1:5000/audio"; // Replace with your server command cmd ipconfig/all
 
 void setup() {
   Serial.begin(115200);
@@ -16,6 +16,9 @@ void setup() {
     Serial.print(".");
   }
   Serial.println("Connected to WiFi!");
+  Serial.println("\nConnected to Wi-Fi!");
+  Serial.print("IP Address: ");
+  Serial.println(WiFi.localIP()); // Print the ESP32's IP address
 }
 
 void loop() {
