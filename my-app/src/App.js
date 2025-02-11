@@ -47,18 +47,17 @@ const SoundGraph = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://127.0.0.1:3000/audio"); // Replace with actual API URL
-        const rawData = await response.arrayBuffer();
-        const int16Array = new Int16Array(rawData);
+        const response = await fetch("http://localhost:5000/audio"); // Flask API URL
+        const data = await response.json();
 
-        const formattedData = Array.from(int16Array).map((value, index) => ({
-          time: index,
-          amplitude: value,
+        const formattedData = data.time.map((time, index) => ({
+          time,
+          amplitude: data.amplitude[index],
         }));
 
         setAudioData(formattedData);
       } catch (error) {
-        console.error("Error fetching audio data:", error);
+        console.error("Error fetching sine wave data:", error);
       }
     };
 
@@ -68,7 +67,9 @@ const SoundGraph = () => {
     <ThemeProvider theme={darkTheme}>
      <CssBaseline /> {/* Ensures background stays dark */}
       <div className="p-4">
+
         <h2 className="text-xl font-bold mb-4"> เครื่องตรวจสมรรถภาพปอด  </h2>
+
         <ResponsiveContainer width="100%" height={300}>
         <LineChart data={audioData} style={{ backgroundColor: "black" }}>
           <XAxis dataKey="time" hide />
@@ -77,8 +78,9 @@ const SoundGraph = () => {
           <CartesianGrid strokeDasharray="3 3" stroke="#555" />
           <Line type="monotone" dataKey="amplitude" stroke="#8884d8" dot={false} />
         </LineChart>
-        </ResponsiveContainer>
+      </ResponsiveContainer>
       </div>
+      
       </ThemeProvider>  
   );
 };
