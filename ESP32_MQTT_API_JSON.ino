@@ -96,6 +96,10 @@ void setup() {
 }
 
 void loop() {
+    if (!client.connected()) {
+    reconnectMQTT();
+  }
+  client.loop();
       for (int i = 0; i < sampleSize; i++) {
         int rawValue = analogRead(MIC_PIN);
         amplitude[i] = (rawValue / 4095.0) * 100.0; // Convert to range 0-100
