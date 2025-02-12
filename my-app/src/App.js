@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
+import { Button } from "@mui/material";
 
   // Dark theme configuration
   const darkTheme = createTheme({
@@ -56,6 +57,9 @@ const SoundGraph = () => {
         }));
 
         setAudioData(formattedData);
+        const intervalId = setInterval(fetchData, 1000); // Fetch every 5 seconds
+
+        return () => clearInterval(intervalId); // Cleanup on unmount
       } catch (error) {
         console.error("Error fetching sine wave data:", error);
       }
@@ -67,9 +71,14 @@ const SoundGraph = () => {
     <ThemeProvider theme={darkTheme}>
      <CssBaseline /> {/* Ensures background stays dark */}
       <div className="p-4">
-
+      <h1 className="text-xl font-bold mb-4"> Electronic stethoscope  </h1>
         <h2 className="text-xl font-bold mb-4"> เครื่องตรวจสมรรถภาพปอด  </h2>
-
+        <Button 
+            className="p-4"
+            onClick={SoundGraph}
+          >
+            Test
+          </Button>
         <ResponsiveContainer width="100%" height={300}>
         <LineChart data={audioData} style={{ backgroundColor: "black" }}>
           <XAxis dataKey="time" hide />
