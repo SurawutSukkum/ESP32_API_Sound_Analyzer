@@ -33,9 +33,7 @@ def receive_data():
         data = request.get_json()
         amplitude = data.get("amplitude")
         print(f"Received amplitude: {amplitude}")
-        time = data.get("time")
-        print(f"Received time: {time}")
-        return jsonify({"status": "success", "received_amplitude": amplitude, "received_time": time})
+        return jsonify({"status": "success", "received_amplitude": amplitude})
     except Exception as e:
         return jsonify({"error": str(e)}), 400
         
