@@ -68,4 +68,4 @@ def mqtt_thread():
 mqtt_thread = threading.Thread(target=mqtt_thread)
 mqtt_thread.start()
 if __name__ == '__main__':
-    app.run(host="35.160.120.126", port=8080, debug=True)
+    app.run(host="0.0.0.0", port=8080, debug=True)
