@@ -1,7 +1,7 @@
 from ast import Subscript
 import paho.mqtt.client as mqtt
 from fastapi import FastAPI, HTTPException
-from flask import Flask, cli, jsonify
+from flask import Flask, cli,request, jsonify
 from flask_cors import CORS
 import time
 import uvicorn 
