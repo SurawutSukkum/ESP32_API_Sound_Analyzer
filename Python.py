@@ -21,6 +21,12 @@ broker = "mqtt.eclipseprojects.io"
 
 port = 1883
 
+@app.route('/audiotest', methods=['POST'])
+def receive_audio():
+    with open("received_audio.raw", "ab") as f:
+        f.write(request.data)
+    return "Received", 200
+
 @app.route('/receive_data', methods=['POST'])
 def receive_data():
     try:
@@ -30,7 +36,6 @@ def receive_data():
         time = data.get("time")
         print(f"Received time: {time}")
         return jsonify({"status": "success", "received_amplitude": amplitude, "received_time": time})
-
     except Exception as e:
         return jsonify({"error": str(e)}), 400
         
