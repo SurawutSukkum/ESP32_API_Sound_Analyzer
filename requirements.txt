@@ -4,3 +4,4 @@ fastapi
 Flask-Cors
 paho-mqtt 
 uvicorn
+numpy
