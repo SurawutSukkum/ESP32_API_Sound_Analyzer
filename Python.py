@@ -20,7 +20,8 @@ CORS(app)  # Allow cross-origin requests
 broker = "mqtt.eclipseprojects.io"
 
 port = 1883
-
+amplitude = []
+time = []
 @app.route('/audiotest', methods=['POST'])
 def receive_audio():
     with open("received_audio.raw", "ab") as f:
@@ -29,10 +30,14 @@ def receive_audio():
 
 @app.route('/receive_data', methods=['POST'])
 def receive_data():
+    global amplitude
+    global time
     try:
         data = request.get_json()
         amplitude = data.get("amplitude")
         print(f"Received amplitude: {amplitude}")
+        time = data.get("time")
+        print(f"Received time: {time}")
         return jsonify({"status": "success", "received_amplitude": amplitude})
     except Exception as e:
         return jsonify({"error": str(e)}), 400
@@ -46,7 +51,7 @@ def generate_sine_wave():
     t = np.linspace(0, duration, int(sample_rate * duration), endpoint=False)
     sine_wave = (100 * np.sin(2 * np.pi * frequency * t)).tolist()
 
-    return jsonify({"time": t.tolist(), "amplitude": sine_wave})
+    return jsonify({"time":time, "amplitude": amplitude})
 # Callback when a message is received
 def on_message(client, userdata, msg):
     print(f"Received message===================================: {msg.payload} on topic {msg.topic}")
