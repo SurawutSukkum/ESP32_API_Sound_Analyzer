@@ -21,6 +21,17 @@ broker = "mqtt.eclipseprojects.io"
 
 port = 1883
 
+@app.route('/receive_data', methods=['POST'])
+def receive_data():
+    try:
+        data = request.get_json()
+        amplitude = data.get("amplitude")
+        print(f"Received amplitude: {amplitude}")
+        return jsonify({"status": "success", "received_amplitude": amplitude})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 400
+        
 @app.route('/audio', methods=['GET'])
 def generate_sine_wave():
     frequency = random.randint(10000, 15000)  # Hz
