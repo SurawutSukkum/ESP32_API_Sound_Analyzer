@@ -90,7 +90,10 @@ const SoundGraph = () => {
           <Line type="monotone" dataKey="amplitude" stroke="#8884d8" dot={false} />
         </LineChart>
       </ResponsiveContainer>
-         <p style={{ fontSize: "30px" }}>
+         <p
+           className="p-4"
+           style={{ fontSize: "30px" }}
+          >
         At lastUpdate : <strong> {lastUpdate} </strong> data amplitude <strong> {audioData} </strong>.
        </p>
       </div>
