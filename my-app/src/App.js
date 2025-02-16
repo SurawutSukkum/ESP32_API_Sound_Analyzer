@@ -45,13 +45,12 @@ const SoundGraph = () => {
 */
 const SoundGraph = () => {
   const [audioData, setAudioData] = useState([]);
-
+  const [lastUpdate, setLastUpdate] = useState(null);
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch("https://esp32-api-sound-analyzer.onrender.com/audio"); // Flask API URL
         const data = await response.json();
-        const [lastUpdate, setLastUpdate] = useState(null);
         const formattedData = data.time.map((time, index) => ({
           time,
           amplitude: data.amplitude[index],
