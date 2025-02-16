@@ -89,10 +89,10 @@ const SoundGraph = () => {
           <CartesianGrid strokeDasharray="3 3" stroke="#555" />
           <Line type="monotone" dataKey="amplitude" stroke="#8884d8" dot={false} />
         </LineChart>
-       <p style={{ fontSize: "30px" }}>
+      </ResponsiveContainer>
+         <p style={{ fontSize: "30px" }}>
         At lastUpdate : <strong> {lastUpdate} </strong> data amplitude <strong> {audioData} </strong>.
        </p>
-      </ResponsiveContainer>
       </div>
       
       </ThemeProvider>  
