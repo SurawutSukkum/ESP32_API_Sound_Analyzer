@@ -90,6 +90,7 @@ const SoundGraph = () => {
           <Line type="monotone" dataKey="amplitude" stroke="#8884d8" dot={false} />
         </LineChart>
       </ResponsiveContainer>
+        <h2 className="text-xl font-bold mb-4"> ข้อมูล </h2>
          <p
            className="p-4"
            style={{ fontSize: "30px" }}
