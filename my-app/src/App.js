@@ -94,7 +94,7 @@ const SoundGraph = () => {
            className="p-4"
            style={{ fontSize: "30px" }}
           >
-        At lastUpdate : <strong> {lastUpdate} </strong> data amplitude <strong> {audioData} </strong>.
+        At lastUpdate : <strong> {lastUpdate} </strong>  .
        </p>
       </div>
       
