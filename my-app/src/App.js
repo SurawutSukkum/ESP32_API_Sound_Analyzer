@@ -25,7 +25,8 @@ import { Button } from "@mui/material";
 /*
 const SoundGraph = () => {
   const [audioData, setAudioData] = useState([]);
-
+  const [lastUpdate, setLastUpdate] = useState(null);
+  
   useEffect(() => {
     const generateSineWave = () => {
       const sampleRate = 100;
@@ -50,7 +51,7 @@ const SoundGraph = () => {
       try {
         const response = await fetch("https://esp32-api-sound-analyzer.onrender.com/audio"); // Flask API URL
         const data = await response.json();
-
+        const [lastUpdate, setLastUpdate] = useState(null);
         const formattedData = data.time.map((time, index) => ({
           time,
           amplitude: data.amplitude[index],
@@ -58,6 +59,7 @@ const SoundGraph = () => {
 
         setAudioData(formattedData);
         const intervalId = setInterval(fetchData, 5000); // Fetch every 5 seconds
+        setLastUpdate(new Date().toLocaleString());
 
         return () => clearInterval(intervalId); // Cleanup on unmount
       } catch (error) {
@@ -87,6 +89,9 @@ const SoundGraph = () => {
           <CartesianGrid strokeDasharray="3 3" stroke="#555" />
           <Line type="monotone" dataKey="amplitude" stroke="#8884d8" dot={false} />
         </LineChart>
+       <p style={{ fontSize: "30px" }}>
+        At lastUpdate : <strong> {lastUpdate} </strong> data amplitude <strong> {audioData} </strong>.
+       </p>
       </ResponsiveContainer>
       </div>
       
