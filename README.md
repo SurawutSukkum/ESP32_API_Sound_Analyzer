@@ -35,12 +35,9 @@ Since React is frontend-only, you need a backend (e.g., Node.js + Express) to ha
 
 Your backend will parse the data and insert it into MySQL
 
-CREATE TABLE sound_data (
- 
+CREATE TABLE sound_data ( 
     id INT AUTO_INCREMENT PRIMARY KEY,
-
     raw_text TEXT
-
 );
 
 
