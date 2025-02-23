@@ -18,3 +18,29 @@ npm install --save material-ui
 npm install motion
 
 npm install lucide-react
+
+### Set Up a Node.js + Express Backend
+
+npm install express mysql cors body-parser
+
+### 1. Fetch the Data in React
+   
+You need to fetch the file content from GitHub and send it to your backend for database insertion.
+
+### 3. Create a Backend API (Node.js + Express)
+
+Since React is frontend-only, you need a backend (e.g., Node.js + Express) to handle MySQL interactions.
+
+### 4. Insert Data into MySQL
+
+Your backend will parse the data and insert it into MySQL
+
+CREATE TABLE sound_data (
+ 
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    raw_text TEXT
+
+);
+
+
