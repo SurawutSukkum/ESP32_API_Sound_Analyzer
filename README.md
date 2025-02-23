@@ -34,11 +34,13 @@ You need to fetch the file content from GitHub and send it to your backend for d
 
 Since React is frontend-only, you need a backend (e.g., Node.js + Express) to handle MySQL interactions.
 
-#Start MySQL & Apache (phpMyAdmin at http://localhost/phpmyadmin/).
-#Run Node.js backend
+Start MySQL & Apache (phpMyAdmin at http://localhost/phpmyadmin/).
 
-'node server.js
-'npm start
+Run Node.js backend
+
+node server.js
+
+npm start
 
 ### 4. Insert Data into MySQL
 
