@@ -21,7 +21,10 @@ npm install lucide-react
 
 ### Set Up a Node.js + Express Backend
 
-npm install express mysql cors body-parser
+npm init -y
+
+npm install express mysql cors body-parser dotenv bcryptjs jsonwebtoken
+
 
 ### 1. Fetch the Data in React
    
@@ -30,6 +33,8 @@ You need to fetch the file content from GitHub and send it to your backend for d
 ### 3. Create a Backend API (Node.js + Express)
 
 Since React is frontend-only, you need a backend (e.g., Node.js + Express) to handle MySQL interactions.
+
+node server.js
 
 ### 4. Insert Data into MySQL
 
