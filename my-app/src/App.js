@@ -21,7 +21,22 @@ import { Button } from "@mui/material";
       h55: { color: "#FFFFFF" },
     },
   });
+const fetchAndSaveData = async () => {
+    try {
+        const response = await fetch('https://esp32-api-sound-analyzer.onrender.com/audio');
+        const text = await response.text();
 
+        await fetch('http://localhost:5000/save-data', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ data: text }),
+        });
+
+        alert('Data saved successfully!');
+    } catch (error) {
+        console.error('Error fetching or saving data:', error);
+    }
+};
 /*
 const SoundGraph = () => {
   const [audioData, setAudioData] = useState([]);
